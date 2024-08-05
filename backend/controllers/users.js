@@ -36,8 +36,6 @@ usersRouter.post('/', async (request, response) => {
 })
 
 usersRouter.get('/', async (req, res) => {
-    // const decodedToken = jwt.verify(req.token, process.env.SECRET)
-
     // if (req.tokenUserName !== 'akwankwaahia') {
     //     return res.status(401).json({ error: 'invalid token' })
     // }
