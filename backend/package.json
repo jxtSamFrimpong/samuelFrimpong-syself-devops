@@ -24,7 +24,8 @@
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^7.2.0",
     "mongoose-unique-validator": "^4.0.0",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "nexe": "^4.0.0-rc.6"
   },
   "devDependencies": {
     "jest": "^29.5.0",

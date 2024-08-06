@@ -1,0 +1,14 @@
+version: '3.9'
+services:
+  blog:
+    hostname: blog
+    container_name: blog
+    build:
+      dockerfile: Dockerfile
+      context: .
+    env_file:
+      - .env
+    environment:
+      - PORT=8080
+    ports:
+      - 8080:8080
