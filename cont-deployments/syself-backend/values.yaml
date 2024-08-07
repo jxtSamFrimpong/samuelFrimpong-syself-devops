@@ -1,0 +1,18 @@
+name: syself-backend
+deploy: 
+  version: v0.0.1
+  repoUser: ewintil
+  replicas: 3
+  requests:
+    memory: "64Mi"
+    cpu: "100m"
+  limits:
+    memory: "128Mi"
+    cpu: "125m"
+  env:
+    TEST_MONGODB_URI:
+    MONGODB_URI: ""
+    SECRET: ""
+api:
+  host: api.syself-backend.net
+  

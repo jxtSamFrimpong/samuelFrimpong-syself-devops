@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: {{ .Values.name }}
+  name: {{ .Values.name }}
+  namespace: {{ .Values.name }}
+spec:
+  replicas: {{ .Values.deploy.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.name }}
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.name }}
+    spec:
+      containers:
+      - image: {{ .Values.deploy.repoUser }}/{{ .Values.name }}:{{ .Values.deploy.version }}
+        name: {{ .Values.name }}
+        imagePullPolicy: Always
+        env:
+        - name: PORT
+          valueFrom:
+            configMapKeyRef:
+              name: {{ .Values.name }}
+              key: PORT
+        {{ if .Values.deploy.env.TEST_MONGODB_URI }}
+        - name: TEST_MONGODB_URI
+          value: {{ .Values.deploy.env.TEST_MONGODB_URI }}
+        {{ else }}
+        - name: MONGODB_URI
+          value: {{ .Values.deploy.env.MONGODB_URI }}
+        {{ end }}
+        - name: SECRET
+          value: {{ .Values.deploy.env.SECRET }}
+        resources:
+          requests:
+            memory: {{ .Values.deploy.requests.memory }}
+            cpu: {{ .Values.deploy.requests.cpu }}
+          limits:
+            memory: {{ .Values.deploy.limits.memory }}
+            cpu: {{ .Values.deploy.limits.cpu }}
+        readinessProbe:
+          tcpSocket:
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 5
+status: {}

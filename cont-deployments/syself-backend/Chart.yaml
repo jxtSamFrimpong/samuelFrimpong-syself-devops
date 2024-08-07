@@ -1,0 +1,9 @@
+apiVersion: v2
+name: syself-backend
+description: A Blog Backend for Syself Devops Internship Assignment
+
+type: application
+
+version: 0.0.4
+
+appVersion: "v0.0.1"
