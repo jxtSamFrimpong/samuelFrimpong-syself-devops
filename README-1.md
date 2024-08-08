@@ -37,7 +37,7 @@ Alternatively, an ExternalName resource could be used to provide access to a man
 
 ###### **Redis**
 
-Currently, my application won't need a key-value data store, but if there's a need to store for example session data, and use that to force sign in when users have been away for a while. Redis is easy to develop with and has a rich amount of docs from the community
+Currently, my application won't need a key-value cache data store, but if there's a need to store for example session data in cache, and use that to force sign in when users have been away for a while. Redis is easy to develop with and has a rich amount of docs from the community
 
 ###### **Kafka**
 
