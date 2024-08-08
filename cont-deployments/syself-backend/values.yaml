@@ -2,13 +2,15 @@ name: syself-backend
 deploy: 
   version: v0.0.1
   repoUser: ewintil
-  replicas: 3
+  replicas: 5
   requests:
     memory: "64Mi"
     cpu: "100m"
   limits:
     memory: "128Mi"
     cpu: "125m"
+    cpuUtilizationScalePoint: 70
+    memUtilizationScalePoint: 90
   env:
     TEST_MONGODB_URI:
     MONGODB_URI: ""

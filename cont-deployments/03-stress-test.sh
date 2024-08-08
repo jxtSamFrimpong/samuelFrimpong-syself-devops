@@ -1,0 +1,2 @@
+seq 1 5000 | xargs -P5 -I{} curl --location 'http://api.syself-backend.net/api/users' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imp4dHNhbSIsImlkIjoiNjZiMTAyMThmODVkMmJlNjZkNzI3Njc4IiwiaWF0IjoxNzIzMDczOTUwLCJleHAiOjE3MjMwNzc1NTB9.K9_uWYUD6bw3ChtGNRdtfBWdKD15mqiKa2EJ462X2xA'
